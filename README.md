@@ -1,1 +1,1 @@
-https://sample-chat-app.vercel.app 
+https://sample-ruby-psi.vercel.app
