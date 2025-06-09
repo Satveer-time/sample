@@ -4,7 +4,6 @@ import './globals.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { UserProvider } from '@auth0/nextjs-auth0/client';
 import { Providers } from './providers';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -22,11 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <UserProvider>
-          <Providers>
-            {children}
-          </Providers>
-        </UserProvider>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
