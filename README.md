@@ -1,1 +1,1 @@
-https://sample-ruby-psi.vercel.app
+https://sample-eta-dun-25.vercel.app/
