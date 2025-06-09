@@ -2,8 +2,9 @@
 
 import { useUser } from '@auth0/nextjs-auth0/client';
 import ChatInterface from '../../app/components/ChatInterface';
+import { Suspense } from 'react';
 
-export default function Home() {
+function HomeContent() {
   const { user, error, isLoading } = useUser();
 
   if (isLoading) {
@@ -38,4 +39,18 @@ export default function Home() {
   }
 
   return <ChatInterface />;
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={
+      <div className="d-flex justify-content-center align-items-center min-vh-100 bg-dark">
+        <div className="spinner-border text-danger" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    }>
+      <HomeContent />
+    </Suspense>
+  );
 } 

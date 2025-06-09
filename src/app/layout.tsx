@@ -20,8 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <UserProvider loginUrl="/api/auth/login" profileUrl="/api/auth/me">
-          <Providers>{children}</Providers>
+        <UserProvider>
+          <Providers>
+            {children}
+          </Providers>
         </UserProvider>
       </body>
     </html>
