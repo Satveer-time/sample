@@ -2,10 +2,11 @@
 
 import { useUser } from '@auth0/nextjs-auth0/client';
 import Link from 'next/link';
+import { Suspense } from 'react';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import ChatInterface from './components/ChatInterface';
 
-export default function Home() {
+function HomeContent() {
   const { user, isLoading } = useUser();
 
   if (isLoading) {
@@ -74,5 +75,20 @@ export default function Home() {
         </main>
       </div>
     </ProtectedRoute>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-50 to-purple-50">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500 mx-auto"></div>
+          <p className="mt-4 text-indigo-600 font-medium">Loading...</p>
+        </div>
+      </div>
+    }>
+      <HomeContent />
+    </Suspense>
   );
 }
